@@ -1,0 +1,20 @@
+{
+  "streams": [
+    {
+      "title": "My Stream",
+      "description": "My first stream!",
+      "id": 1
+    },
+    {
+      "title": "LoL",
+      "description": "Diamond ranked games",
+      "id": 2
+    },
+    {
+      "title": "Nowy strimek",
+      "description": "nowy strimek",
+      "userId": "116822369784769526729",
+      "id": 3
+    }
+  ]
+}
