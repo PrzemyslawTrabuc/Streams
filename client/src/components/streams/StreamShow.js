@@ -30,6 +30,9 @@ const StreamShow = ({fetchStream, stream}) => {
                 }]
             }
         );
+        // playerRef2.current.on('error', function(){
+        //     console.log(playerRef2.current.error());
+        // })
 
     }
 

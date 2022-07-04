@@ -2,57 +2,64 @@ import React from 'react';
 import {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {signIn, signOut} from '../Actions';
+import jwt_decode from 'jwt-decode';
 
 class GoogleAuth2 extends React.Component {
+ 
     componentDidMount() {
-        window.gapi.load('client:auth2', () => {
-            window.gapi.client.init({
-                clientId: '1030502307448-nmhaj2n273ahcd1ededol73i83arfotc.apps.googleusercontent.com',
-                scope: 'email',
-                plugin_name: "streams"
-            }).then(() => {
-                this.auth = window.gapi.auth2.getAuthInstance();
-                this.onAuthChange(this.auth.isSignedIn.get());
-                this.auth.isSignedIn.listen(this.onAuthChange);
-            });
+        // window.gapi.load('client:auth2', () => {
+        //     window.gapi.client.init({
+        //         clientId: '1030502307448-nmhaj2n273ahcd1ededol73i83arfotc.apps.googleusercontent.com',
+        //         scope: 'email',
+        //         plugin_name: "streams"
+        //     }).then(() => {
+        //         this.auth = window.gapi.auth2.getAuthInstance();
+        //         this.onAuthChange(this.auth.isSignedIn.get());
+        //         this.auth.isSignedIn.listen(this.onAuthChange);
+        //     });
+        // });
+        window.google.accounts.id.initialize({
+            client_id: '1030502307448-nmhaj2n273ahcd1ededol73i83arfotc.apps.googleusercontent.com',
+            callback: this.handleCallbackResponse
         });
+        window.google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            {theme: 'outline', size: 'large'}
+        )
+
     }
 
-    onAuthChange = (isSignedIn) => {
-        if(isSignedIn){
-            this.props.signIn(this.auth.currentUser.get().getId());
-        }else{
-            this.props.signOut();
-        }
+    handleCallbackResponse = (response) =>{       
+        console.log(response.credential);
+        let userObject = jwt_decode(response.credential);
+        console.log(userObject.sub);
+        this.props.signIn(userObject.sub)
+        return userObject;
     }
 
-    onSignInClick = () => {
-        this.auth.signIn();
-    }
-
-    onSignOutClick = () => {
-        this.auth.signOut();
-    }
-
-    renderAuthButton() {
-        console.log("czy zalogowano: " + this.props.isSignedIn +" " + this.props.userId)
-        if (this.props.isSignedIn === null) {
-            return null
-        } else if (this.props.isSignedIn) {
-            return (<button onClick={this.onSignOutClick} className="ui red google button">
-                <i className="google icon"></i>
-                Sign Out
-            </button>)
-        } else {
-            return (<button onClick={this.onSignInClick} className="ui red google button">
-                <i className="google icon"></i>
-                Sign In with Google
-            </button>)
-        }
-    }
+    // renderAuthButton() {
+    //     console.log("czy zalogowano: " + this.props.isSignedIn +" " + this.props.userId)
+    //     if (this.props.isSignedIn === null) {
+    //         return null
+    //     } else if (this.props.isSignedIn) {
+    //         return (<button onClick={this.onSignOutClick} className="ui red google button">
+    //             <i className="google icon"></i>
+    //             Sign Out
+    //         </button>)
+    //     } else {
+    //         return (<button onClick={this.onSignInClick} className="ui red google button">
+    //             <i className="google icon"></i>
+    //             Sign In with Google
+    //         </button>)
+    //     }
+    // }
 
     render() {
-        return <div>{this.renderAuthButton()}</div>;
+        return( 
+        <div>{/*this.renderAuthButton()*/}
+            <div id="signInDiv">TEST</div>
+        </div>
+        )
     }
 }
 
@@ -114,6 +121,6 @@ class GoogleAuth2 extends React.Component {
 // }
 //
 const mapStateToProps = (state) => {
-    return {isSignedIn: state.auth.isSignedIn, userId: state.auth.userId};
+    return {userId: state.auth.userId};
 };
-export default connect(mapStateToProps, {signIn, signOut}) (GoogleAuth2);
+export default connect(mapStateToProps, {signIn}) (GoogleAuth2);

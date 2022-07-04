@@ -3,6 +3,7 @@ import streams from '../apis/streams'
 import history from '../history';
 
 export const signIn = (currentUserId)=>{
+    console.log('dupa')
     return {
         type: SIGN_IN,
         payload: currentUserId
