@@ -2,11 +2,10 @@ import {SIGN_IN, SIGN_OUT, CREATE_STREAM, FETCH_STREAM, FETCH_STREAMS, DELETE_ST
 import streams from '../apis/streams'
 import history from '../history';
 
-export const signIn = (currentUserId)=>{
-    console.log('dupa')
+export const signIn = (currentUserId, userName)=>{
     return {
         type: SIGN_IN,
-        payload: currentUserId
+        payload: {'id':currentUserId, 'name':userName}
     };
 };
 

@@ -3,6 +3,8 @@ import {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {signIn, signOut} from '../Actions';
 import jwt_decode from 'jwt-decode';
+import { Button, Badge, Grid } from '@mantine/core';
+
 
 class GoogleAuth2 extends React.Component {
  
@@ -17,23 +19,25 @@ class GoogleAuth2 extends React.Component {
         //         this.onAuthChange(this.auth.isSignedIn.get());
         //         this.auth.isSignedIn.listen(this.onAuthChange);
         //     });
-        // });
+        // });    
         window.google.accounts.id.initialize({
             client_id: '1030502307448-nmhaj2n273ahcd1ededol73i83arfotc.apps.googleusercontent.com',
             callback: this.handleCallbackResponse
-        });
-        window.google.accounts.id.renderButton(
+        })   
+       // if(!this.props.UserId)
+        window.google.accounts.id.renderButton(        
             document.getElementById("signInDiv"),
             {theme: 'outline', size: 'large'}
-        )
-
+        )  
     }
 
     handleCallbackResponse = (response) =>{       
         console.log(response.credential);
         let userObject = jwt_decode(response.credential);
+        console.log(userObject.name)
         console.log(userObject.sub);
-        this.props.signIn(userObject.sub)
+        this.props.signIn(userObject.sub, userObject.name)
+        document.getElementById('signInDiv').hidden=true;
         return userObject;
     }
 
@@ -53,11 +57,31 @@ class GoogleAuth2 extends React.Component {
     //         </button>)
     //     }
     // }
+    handleSignOut = () =>{
+        document.getElementById('signInDiv').hidden=false;
+        this.props.signOut();
+    }
+
+    renderLogOutButton = () =>{
+       if(this.props.userId)
+        return(
+            <Button onClick={this.handleSignOut} variant="gradient" gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}>Sign Out</Button>
+        )
+    }
+
+    renderLoggedInUserBadge = () =>{
+        if(this.props.userId)
+        return(
+            <Badge color="violet">Welcome: {this.props.userName}</Badge>
+        )
+    }
 
     render() {
         return( 
-        <div>{/*this.renderAuthButton()*/}
-            <div id="signInDiv">TEST</div>
+        <div>
+            <div id="signInDiv"></div>
+            {this.renderLoggedInUserBadge()}
+            {this.renderLogOutButton()}
         </div>
         )
     }
@@ -120,7 +144,10 @@ class GoogleAuth2 extends React.Component {
 //
 // }
 //
-const mapStateToProps = (state) => {
-    return {userId: state.auth.userId};
+const mapStateToProps = (state, ownProps) => {
+    return {
+        userId: state.auth.userData.id,
+        userName: state.auth.userData.name
+    };
 };
-export default connect(mapStateToProps, {signIn}) (GoogleAuth2);
+export default connect(mapStateToProps, {signIn, signOut}) (GoogleAuth2);
