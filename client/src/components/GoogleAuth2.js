@@ -158,8 +158,8 @@ class GoogleAuth2 extends React.Component {
 //
 const mapStateToProps = (state, ownProps) => {
     return {
-        userId: state.auth.userData.id,
-        userName: state.auth.userData.name
+        userId: state.auth.userId,
+        userName: state.auth.userName
     };
 };
 export default connect(mapStateToProps, {signIn, signOut}) (GoogleAuth2);
