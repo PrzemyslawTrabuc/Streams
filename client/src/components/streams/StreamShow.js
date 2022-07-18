@@ -26,7 +26,7 @@ const StreamShow = ({fetchStream, stream}) => {
                 preload: 'auto',
                 fluid: true,
                 sources: [{
-                    src: 'http://localhost:8000/live/1/index.m3u8',
+                    src: `http://localhost:8000/live/${stream.id}/index.m3u8`,
                 }]
             }
         );
@@ -75,7 +75,7 @@ const StreamShow = ({fetchStream, stream}) => {
                 <div className="data-vjs-player">
                     {/*<video id="video" ref={videoRef} style={{width: '100%'}} controls></video>*/}
                     <h1>{title}</h1>
-                    <h5>{description}</h5>
+                    <h4>{description}</h4>
                     <video style={{marginLeft: 'auto', marginRight: 'auto'}} className="vjs-matrix video-js"
                            ref={videoRef2}></video>
                 </div>

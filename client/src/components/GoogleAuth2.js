@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {signIn, signOut} from '../Actions';
 import jwt_decode from 'jwt-decode';
-import { Button, Badge, Grid } from '@mantine/core';
+import { Button, Badge, Grid, Avatar } from '@mantine/core';
 
 
 class GoogleAuth2 extends React.Component {
@@ -24,10 +24,14 @@ class GoogleAuth2 extends React.Component {
             client_id: '1030502307448-nmhaj2n273ahcd1ededol73i83arfotc.apps.googleusercontent.com',
             callback: this.handleCallbackResponse
         })   
-       // if(!this.props.UserId)
+        if(!this.props.UserId)
         window.google.accounts.id.renderButton(        
             document.getElementById("signInDiv"),
-            {theme: 'outline', size: 'large'}
+            {
+                theme: 'outline', 
+                size: 'large',
+                type: "standard",
+            }
         )  
     }
 
@@ -65,23 +69,31 @@ class GoogleAuth2 extends React.Component {
     renderLogOutButton = () =>{
        if(this.props.userId)
         return(
-            <Button onClick={this.handleSignOut} variant="gradient" gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}>Sign Out</Button>
+            <Button onClick={this.handleSignOut} style={{marginLeft:"10px"}} size="xs" variant="gradient" gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}>Sign Out</Button>
         )
     }
 
     renderLoggedInUserBadge = () =>{
-        if(this.props.userId)
+        
+        if(this.props.userId){
+            let avatarContent = this.props.userName.split(" ") 
         return(
-            <Badge color="violet">Welcome: {this.props.userName}</Badge>
+            <>
+            <Avatar color="violet" radius="xl">{avatarContent[0].charAt(0)}{avatarContent[1].charAt(0)}</Avatar>
+            {/* <Badge size="lg" radius='md' color="violet">{this.props.userName}</Badge> */}
+            </>
         )
+        }
     }
 
     render() {
         return( 
         <div>
             <div id="signInDiv"></div>
+            <Grid justify="flex-end" align="center">
             {this.renderLoggedInUserBadge()}
             {this.renderLogOutButton()}
+            </Grid>
         </div>
         )
     }

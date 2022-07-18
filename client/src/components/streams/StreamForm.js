@@ -1,6 +1,7 @@
 import React from 'react';
 //import {Field, reduxForm} from 'redux-form'; // redux form -- OLD
 import { Form, Field } from "react-final-form";
+import {Button} from '@mantine/core';
 
 const StreamForm = (props) => {
     const renderError = ({ error, touched }) => {
@@ -53,7 +54,7 @@ const StreamForm = (props) => {
                         component={renderInput}
                         label="Enter Description"
                     />
-                    <button className="ui button primary">Submit</button>
+                    <Button type="submit" variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>Submit</Button>
                 </form>
             )}
         />
