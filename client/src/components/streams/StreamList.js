@@ -57,6 +57,7 @@ class StreamList extends React.Component {
 
   renderList() {
     return this.props.streams.map((stream) => {
+      let streamCoverNumber = Math.floor(Math.random()*16)
       return (
         <div
           span={10}
@@ -67,7 +68,7 @@ class StreamList extends React.Component {
           <Card shadow="xs" p="lg">
             <Card.Section>
             <Link to={`/streams/${stream.id}`}>
-              <Image src={streamImage_16}></Image>
+              <Image src={require(`../../style/${streamCoverNumber}.jpeg`)}></Image>
             </Link>
             </Card.Section>
             <Group position="left" style={{ marginBottom: 5 }}>
