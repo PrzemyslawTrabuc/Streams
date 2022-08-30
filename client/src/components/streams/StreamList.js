@@ -57,7 +57,7 @@ class StreamList extends React.Component {
 
   renderList() {
     return this.props.streams.map((stream) => {
-      let streamCoverNumber = Math.floor(Math.random()*16)
+      let streamCoverNumber = 1 + Math.floor(Math.random() * 16);
       return (
         <div
           span={10}
@@ -67,21 +67,20 @@ class StreamList extends React.Component {
         >
           <Card shadow="xs" p="lg">
             <Card.Section>
-            <Link to={`/streams/${stream.id}`}>
-              <Image src={require(`../../style/${streamCoverNumber}.jpeg`)}></Image>
-            </Link>
+              <Link to={`/streams/${stream.id}`}>
+                <Image
+                  src={require(`../../style/${streamCoverNumber}.jpeg`)}
+                ></Image>
+              </Link>
             </Card.Section>
             <Group position="left" style={{ marginBottom: 5 }}>
               <Text size="md" weight={500}>
                 <Link to={`/streams/${stream.id}`} className="header">
                   <h2>
-                    {stream.title} 
-                    {stream.userId === this.props.currentUserId ? 
-                        <Badge size="md">
-                        {stream.id}
-                        </Badge> 
-                        : null}
-                  
+                    {stream.title}
+                    {stream.userId === this.props.currentUserId ? (
+                      <Badge size="md">{stream.id}</Badge>
+                    ) : null}
                   </h2>
                 </Link>
               </Text>
@@ -124,9 +123,7 @@ class StreamList extends React.Component {
     return (
       <div>
         <h2>Watch STREAMY streams</h2>
-        <div className="ui celled list">
-            {this.renderList()}
-        </div>
+        <div className="ui celled list">{this.renderList()}</div>
         {this.renderCreate()}
       </div>
     );

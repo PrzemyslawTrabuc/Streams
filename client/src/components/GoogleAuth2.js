@@ -1,9 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
 import { connect } from "react-redux";
 import { signIn, signOut } from "../Actions";
 import jwt_decode from "jwt-decode";
-import { Button, Badge, Grid, Avatar } from "@mantine/core";
+import { Button, Grid, Avatar } from "@mantine/core";
 
 class GoogleAuth2 extends React.Component {
   componentDidMount() {
