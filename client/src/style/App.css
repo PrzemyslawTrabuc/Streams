@@ -1,11 +1,11 @@
 @font-face {
-  font-family: 'silkscreen';
-  src: local('silkscreen'), url(./slkscr.ttf) format('truetype');
+  font-family: "silkscreen";
+  src: local("silkscreen"), url(./slkscr.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: 'pixeboy';
-  src: local('pixeboy'), url(./pixeboy.ttf) format('truetype');
+  font-family: "pixeboy";
+  src: local("pixeboy"), url(./pixeboy.ttf) format("truetype");
 }
 
 /* iframe {
@@ -18,12 +18,12 @@
   align-items: center;
 }
 
-.right.menu>div {
+.right.menu > div {
   display: flex;
   align-items: center;
 }
 
-.right.menu>a {
+.right.menu > a {
   align-self: center !important;
 }
 
@@ -32,7 +32,7 @@ div.ui.celled.list {
   flex-wrap: wrap;
 }
 
-.ui.celled.list>.item {
+.ui.celled.list > .item {
   display: flex !important;
   flex-direction: column;
   position: relative;
@@ -44,22 +44,22 @@ div.ui.celled.list {
   /* flex: 1; */
 }
 
-.ui.celled.list>.item>.content {
+.ui.celled.list > .item > .content {
   padding-left: 0;
 }
 
-.ui.celled.list>.item>.content>.header {
+.ui.celled.list > .item > .content > .header {
   padding: 5px 0;
 }
 
-.ui.celled.list>.item,
-.ui.celled.list>.item:last-child {
+.ui.celled.list > .item,
+.ui.celled.list > .item:last-child {
   border-top: none !important;
   border-bottom: none !important;
 }
 
-body .ui.list>.item>i.icon {
-  content: '';
+body .ui.list > .item > i.icon {
+  content: "";
   display: block;
   background-size: cover;
   height: 180px;
@@ -69,70 +69,70 @@ body .ui.list>.item>i.icon {
 }
 
 .item:nth-child(1) i {
-  background: url('./16.jpeg');
+  background: url("./16.jpeg");
 }
 
 .item:nth-child(2) i {
-  background: url('./12.jpeg');
+  background: url("./12.jpeg");
 }
 
 .item:nth-child(3) i {
-  background: url('./3.jpeg');
+  background: url("./3.jpeg");
 }
 
 .item:nth-child(4) i {
-  background: url('./4.jpeg');
+  background: url("./4.jpeg");
 }
 
 .item:nth-child(5) i {
-  background: url('./5.jpeg');
+  background: url("./5.jpeg");
 }
 
 .item:nth-child(6) i {
-  background: url('./6.jpeg');
+  background: url("./6.jpeg");
 }
 
 .item:nth-child(7) i {
-  background: url('./7.jpeg');
+  background: url("./7.jpeg");
 }
 
 .item:nth-child(8) i {
-  background: url('./8.jpeg');
+  background: url("./8.jpeg");
 }
 
 .item:nth-child(9) i {
-  background: url('./9.jpeg');
+  background: url("./9.jpeg");
 }
 
 .item:nth-child(10) i {
-  background: url('./10.jpeg');
+  background: url("./10.jpeg");
 }
 
 .item:nth-child(11) i {
-  background: url('./11.jpeg');
+  background: url("./11.jpeg");
 }
 
 .item:nth-child(12) i {
-  background: url('./2.jpeg');
+  background: url("./2.jpeg");
 }
 
 .item:nth-child(13) i {
-  background: url('./13.jpeg');
+  background: url("./13.jpeg");
 }
 
 .item:nth-child(14) i {
-  background: url('./14.jpeg');
+  background: url("./14.jpeg");
 }
 
 .item:nth-child(15) i {
-  background: url('./15.jpeg');
+  background: url("./15.jpeg");
 }
 
 .item:nth-child(16) i {
-  background: url('./1.jpeg');
+  background: url("./1.jpeg");
 }
 
-#root>div>div>div.ui.secondary.pointing.menu>a {
+#root > div > div > div.ui.secondary.pointing.menu > a {
   font-family: pixeboy;
   font-size: 30px;
   padding: 8px;
@@ -140,23 +140,23 @@ body .ui.list>.item>i.icon {
   filter: drop-shadow(0px 3px 1px #b4f3e6);
 }
 
-.item>i:before {
+.item > i:before {
   display: none !important;
 }
 
 .item .right.floated.content {
-  top: 42%;
+  top: 55%;
   position: absolute;
   margin-left: -10px;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
 }
 
-.right.floated.content>a>button {
+.right.floated.content > a > button {
   margin-top: 2px;
 }
 
-body .ui.list>.item .description {
+body .ui.list > .item .description {
   font-family: silkscreen;
   font-size: 12px;
   color: #606060 !important;
@@ -166,7 +166,7 @@ body .ui.list>.item .description {
 
 .description::-webkit-scrollbar {
   width: 3px;
-  left:10px;
+  left: 10px;
 }
 
 h1,
@@ -189,7 +189,7 @@ video {
 .streamer {
   position: relative;
   height: 320px;
-  background: url('./streamer.jpeg') no-repeat;
+  background: url("./streamer.jpeg") no-repeat;
   background-size: cover;
   background-position: 0 -85px;
 }

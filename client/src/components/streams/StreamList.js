@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { fetchStreams } from "../../Actions";
 import { Link } from "react-router-dom";
 import { Button, Card } from "@mantine/core";
-import { Image, Text, Badge, Group, Grid } from "@mantine/core";
-import streamImage_16 from "../../style/16.jpeg";
+import { Image, Text, Badge, Group } from "@mantine/core";
 
 class StreamList extends React.Component {
   componentDidMount() {
@@ -61,7 +60,7 @@ class StreamList extends React.Component {
       return (
         <div
           span={10}
-          style={{ width: "200px", margin: "auto", height: "500px" }}
+          style={{ width: "300px", margin: "auto", marginBottom: "3vh" }}
           className="item"
           key={stream.id}
         >
