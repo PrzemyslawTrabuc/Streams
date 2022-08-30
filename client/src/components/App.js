@@ -3,7 +3,6 @@ import {
   Route,
   Routes,
   unstable_HistoryRouter as HistoryRouter,
-  BrowserRouter,
 } from "react-router-dom";
 import StreamCreate from "./streams/StreamCreate";
 import StreamEdit from "./streams/StreamEdit";
