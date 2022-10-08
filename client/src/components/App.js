@@ -20,13 +20,18 @@ const App = () => {
     <div className="ui container xl">
       <HistoryRouter history={history}>
         <Header />
-        <Routes>
-          <Route path="/" element={<StreamList />}></Route>
-          <Route path="/streams/new" element={<StreamCreate />}></Route>
-          <Route path="/streams/edit/:id" element={<StreamEdit />}></Route>
-          <Route path="/streams/delete/:id" element={<StreamDelete />}></Route>
-          <Route path="/streams/:id" element={<StreamShow />}></Route>
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<StreamList />}></Route>
+            <Route path="/streams/new" element={<StreamCreate />}></Route>
+            <Route path="/streams/edit/:id" element={<StreamEdit />}></Route>
+            <Route
+              path="/streams/delete/:id"
+              element={<StreamDelete />}
+            ></Route>
+            <Route path="/streams/:id" element={<StreamShow />}></Route>
+          </Routes>
+        </main>
       </HistoryRouter>
     </div>
   );
