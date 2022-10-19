@@ -11,5 +11,3 @@ cd -
 
 cd client
 npm install
-
-read
