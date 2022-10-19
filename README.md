@@ -21,6 +21,7 @@ Simple streaming app
 ## Installation
 1. Run 'install.sh' to install components
 2. Run 'run.sh' to start app.
+3. To start streaming open e.q. OBS and start streaming under addres: 'rtmp://localhost/live' with key value - the key value of stream is its 'id' in json database (default one by one 1 2 3... on streams list)
 
 ## Screenshots
 
